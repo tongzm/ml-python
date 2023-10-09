@@ -1,11 +1,11 @@
-È¥ÖØ
+å»é‡
 df = df.drop_duplicates().reset_index(drop=True)
-É¾³ıÄ³Ò»ÁĞ
+åˆ é™¤æŸä¸€åˆ—
 df2=df2.drop(cols,axis=1) 
-É¾³ıÁ½ĞĞ
+åˆ é™¤ä¸¤è¡Œ
 df.drop(index=[0, 1])
 
-date×ª×Ö·û´®
+dateè½¬å­—ç¬¦ä¸²
 
 from datetime import datetime, date, time
 d = date.fromisoformat('2018-09-22')
@@ -21,138 +21,168 @@ start=pd.to_datetime('2017-01-01')
 
 
 
-ĞŞ¸ÄÀàĞÍ
+ä¿®æ”¹ç±»å‹
 train['tf_status'] = t1['tf_status'].astype(np.int64)
 
-ĞŞ¸ÄÈÕÆÚÀàĞÍ
+ä¿®æ”¹æ—¥æœŸç±»å‹
 df['ds'] = pd.to_datetime(df['ds'])
 
-ĞŞ¸Ä×Ö¶ÎÃû
+ä¿®æ”¹å­—æ®µå
 df.rename(columns={'#studentid':'studentid'}, inplace = True)
 
-#¼ÓÄêÔÂ
+#åŠ å¹´æœˆ
 df['year']=df.datetime.apply(lambda x: x.year)
 df['month'] = df.datetime.apply(lambda x: x.month)
 df['year'] = df['year'].astype(np.int64)
 df['month'] = df['month'].astype(np.int64)
 
-É¾³ı×Ö¶Î
+åˆ é™¤å­—æ®µ
 df.drop(['#id'], axis=1, inplace=True)
 
-²é¿´Êı¾İÖĞ¶¥²¿10%µÄÊı¾İ
+æŸ¥çœ‹æ•°æ®ä¸­é¡¶éƒ¨10%çš„æ•°æ®
 print(df.weeks.quantile(np.arange(.9,1,.01)))
 
-ÉèÖÃË÷Òı
+è®¾ç½®ç´¢å¼•
 df = df.set_index(['hetongdetailid'])
 
-ÅĞ¶Ï¿ÕÖµ
+åˆ¤æ–­ç©ºå€¼
 
-print("ÔÚ cat ÁĞÖĞ×Ü¹²ÓĞ %d ¸ö¿ÕÖµ." % df['cat'].isnull().sum())
+print("åœ¨ cat åˆ—ä¸­æ€»å…±æœ‰ %d ä¸ªç©ºå€¼." % df['cat'].isnull().sum())
 
-print("ÔÚ review ÁĞÖĞ×Ü¹²ÓĞ %d ¸ö¿ÕÖµ." % df['review'].isnull().sum())
+print("åœ¨ review åˆ—ä¸­æ€»å…±æœ‰ %d ä¸ªç©ºå€¼." % df['review'].isnull().sum())
 
 df[df.isnull().values==True]
 
 df = df[pd.notnull(df['review'])]
 
-ÅÅĞò
+æ’åº
 df.sort_values(by="x1",ascending= False)  
 
-Ä£ºı²éÑ¯
+æ¨¡ç³ŠæŸ¥è¯¢
 df_remark_tf[df_remark_tf["content_method"].str.contains(keystring)]
 
-ĞŞ¸Ä×Ö¶ÎÀàĞÍ
+ä¿®æ”¹å­—æ®µç±»å‹
 df_appraise['deptid'] = df_appraise['deptid'].astype(np.int64)
 
-ĞŞ¸ÄÊı¾İ(https://blog.csdn.net/zhangchuang601/article/details/79583551)
+ä¿®æ”¹æ•°æ®(https://blog.csdn.net/zhangchuang601/article/details/79583551)
 df.loc[1,['name','age']] = ['bb',11]
-df.iloc[1,2] = 19#ĞŞ¸ÄÄ³Ò»ÎŞ
+df.iloc[1,2] = 19#ä¿®æ”¹æŸä¸€æ— 
 df.loc[df[df.htid.isin(ids)].index,"y"]=1
 
-±£´æÊı¾İ¿â
+ä¿å­˜æ•°æ®åº“
 df.to_sql(name='predict',con=mysql_engine,if_exists = 'replace')
 
-Éú³ÉÈÕÆÚ
+ç”Ÿæˆæ—¥æœŸ
 dt = datetime.datetime(year, month, 1)
 
-²é¿´¶¥²¿10%Êı¾İ·Ö²¼
+æŸ¥çœ‹é¡¶éƒ¨10%æ•°æ®åˆ†å¸ƒ
 print(movie_rating_count['totalRatingCount'].quantile(np.arange(.9,1,.01)))
 
 #-------plotly.express-------------------------
-#ÕÛÏßÍ¼
+#æŠ˜çº¿å›¾
 import plotly.express as px
 
 fig = px.line(df, x='date', y='y_true',
-              labels={'date':'ÈÕÆÚ', 'y_true':'»°ÎñÁ¿'},
+              labels={'date':'æ—¥æœŸ', 'y_true':'è¯åŠ¡é‡'},
               markers=True)
 fig.update_xaxes(tickformat = "%Y-%m-%d", hoverformat = "%Y-%m-%d")
-fig.update_layout(title_text="ÈÈÏß²¿ÃÅÈÕÒµÎñÁ¿Ç÷ÊÆÍ¼", title_x=0.5)
-fig.update_traces(marker=dict(size=3)) #¿ØÖÆµãµÄ´óĞ¡
+fig.update_layout(title_text="çƒ­çº¿éƒ¨é—¨æ—¥ä¸šåŠ¡é‡è¶‹åŠ¿å›¾", title_x=0.5)
+fig.update_traces(marker=dict(size=3)) #æ§åˆ¶ç‚¹çš„å¤§å°
 fig.show()
 
-#É¢µãÍ¼
-fig = px.scatter(df, x="ÕæÊµ¶©µ¥Á¿", y="ÕæÊµ½ğ¶î",hover_data=['did','ÈÕÆÚ'])
-fig.update_traces(marker=dict(size=4)) #µãµÄ´óĞ¡
+#æ•£ç‚¹å›¾
+fig = px.scatter(df, x="çœŸå®è®¢å•é‡", y="çœŸå®é‡‘é¢",hover_data=['did','æ—¥æœŸ'])
+fig.update_traces(marker=dict(size=4)) #ç‚¹çš„å¤§å°
 fig.show()
 
 ----------------------------------
-1¡¢nohup command &
-ÀıÈç nohup jupyter notebook &
+1ã€nohup command &
+ä¾‹å¦‚ nohup jupyter notebook &
 
-2¡¢ÕÒµ½½ø³ÌPID(¹Ø±ÕÔÚÇ°ÃæºóÌ¨Ö´ĞĞµÄ½ø³ÌµÄ²½Öè£¬Ê×ÏÈÕÒµ½Æä½ø³ÌPID)
+2ã€æ‰¾åˆ°è¿›ç¨‹PID(å…³é—­åœ¨å‰é¢åå°æ‰§è¡Œçš„è¿›ç¨‹çš„æ­¥éª¤ï¼Œé¦–å…ˆæ‰¾åˆ°å…¶è¿›ç¨‹PID)
 ps -ef | grep xxxx
-ps -ef ²é¿´±¾»úËùÓĞµÄ½ø³Ì£»grep xxxx´ú±í¹ıÂËÕÒµ½Ìõ¼şxxxxµÄÏîÄ¿
+ps -ef æŸ¥çœ‹æœ¬æœºæ‰€æœ‰çš„è¿›ç¨‹ï¼›grep xxxxä»£è¡¨è¿‡æ»¤æ‰¾åˆ°æ¡ä»¶xxxxçš„é¡¹ç›®
 
-3¡¢killµô½ø³Ì
-kill -9 ¾ßÌåµÄPID
+3ã€killæ‰è¿›ç¨‹
+kill -9 å…·ä½“çš„PID
 
--------------´ò¿ªÖ¸¶¨¶Ë¿Ú-------------------------------------
+-------------æ‰“å¼€æŒ‡å®šç«¯å£-------------------------------------
 firewall-cmd --zone=public --add-port=8504/tcp --permanent
 firewall-cmd --reload
 
-netstat -ntlp   //²é¿´µ±Ç°ËùÓĞtcp¶Ë¿Ú¡¤
-netstat -ntulp |grep 8888   //²é¿´ËùÓĞ1935¶Ë¿ÚÊ¹ÓÃÇé¿ö
+netstat -ntlp   //æŸ¥çœ‹å½“å‰æ‰€æœ‰tcpç«¯å£Â·
+netstat -ntulp |grep 8888   //æŸ¥çœ‹æ‰€æœ‰1935ç«¯å£ä½¿ç”¨æƒ…å†µ
 
-------------------¸üĞÂpipÃüÁî----------------------------------------
+------------------æ›´æ–°pipå‘½ä»¤----------------------------------------
 python -m pip install --upgrade pip
 
--------------´î½¨ĞéÄâ»·¾³-----------------------------
-# ´´½¨ĞéÄâ»·¾³
+-------------æ­å»ºè™šæ‹Ÿç¯å¢ƒ-----------------------------
+# åˆ›å»ºè™šæ‹Ÿç¯å¢ƒ
 conda create --name yourenvname python=3.8
 
-# ½øÈëĞéÄâ»·¾³ 
+# è¿›å…¥è™šæ‹Ÿç¯å¢ƒ 
 conda activate yourenvname
 
-#ÍË³öĞéÄâ»·¾³
+#é€€å‡ºè™šæ‹Ÿç¯å¢ƒ
 conda deactivate
 
-#É¾³ıĞéÄâ»·¾³
+#åˆ é™¤è™šæ‹Ÿç¯å¢ƒ
 conda remove -n py39 --all
 
-# ÔÚjupyter notebookÖĞÌí¼ÓĞéÄâ»·¾³
+# åœ¨jupyter notebookä¸­æ·»åŠ è™šæ‹Ÿç¯å¢ƒ
 python -m ipykernel install --user --name yourenvname --display-name "display-name"
 
 
-------------------ÔÚjupyter notebookÀïÃæÌí¼ÓĞéÄâ»·¾³----------------------------------------
-1.cmd½øÈëĞéÄâ»·¾³£¨torch_env£©
+------------------åœ¨jupyter notebooké‡Œé¢æ·»åŠ è™šæ‹Ÿç¯å¢ƒ----------------------------------------
+1.cmdè¿›å…¥è™šæ‹Ÿç¯å¢ƒï¼ˆtorch_envï¼‰
 activate torch_env
 
 2.pip install ipykernel ipython
-»Ø³µ
+å›è½¦
 
 3.ipython kernel install --user --name torch_env
-»Ø³µ
+å›è½¦
 
-4.ÔÙ´Î½øÈëjupyter notebook
-ÓÒÉÏ½Ç£¬new£¬¼´¿ÉÑ¡ÔñĞèÒªµÄĞéÄâ»·¾³¡£
+4.å†æ¬¡è¿›å…¥jupyter notebook
+å³ä¸Šè§’ï¼Œnewï¼Œå³å¯é€‰æ‹©éœ€è¦çš„è™šæ‹Ÿç¯å¢ƒã€‚
 
-5.ÁíÍâ£¬Èç¹ûĞèÒªÔÚÖ¸¶¨ÎÄ¼ş¼ĞÖĞ´ò¿ªjupyter notebook,Ö»ĞèÒª´ò¿ªÎÄ¼ş¼ĞËùÔÚÎ»ÖÃ£¬µã»÷ËÑË÷¿ò×ó±ßµÄÎ»ÖÃ¿ò£¬ÊäÈëcmd,ÔÙÊäÈëjupyter notebook,¼´¿É½«Â·¾¶ÉèÎª×Ô¼ºĞèÒªµÄ¡£
+5.å¦å¤–ï¼Œå¦‚æœéœ€è¦åœ¨æŒ‡å®šæ–‡ä»¶å¤¹ä¸­æ‰“å¼€jupyter notebook,åªéœ€è¦æ‰“å¼€æ–‡ä»¶å¤¹æ‰€åœ¨ä½ç½®ï¼Œç‚¹å‡»æœç´¢æ¡†å·¦è¾¹çš„ä½ç½®æ¡†ï¼Œè¾“å…¥cmd,å†è¾“å…¥jupyter notebook,å³å¯å°†è·¯å¾„è®¾ä¸ºè‡ªå·±éœ€è¦çš„ã€‚
 
-ÔÚjupyter ÖĞÉ¾³ıĞéÄâ»·¾³
+åœ¨jupyter ä¸­åˆ é™¤è™šæ‹Ÿç¯å¢ƒ
 6.jupyter kernelspec uninstall myenv
 
----------pip install ¾µÏñ°²×°-----------------------------------------
+---------pip install é•œåƒå®‰è£…-----------------------------------------
 pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+#base64è½¬PIL
+def base64_to_pil(img_base64):
+    base64_decoded = base64.b64decode(img_base64)
+    byte_stream = io.BytesIO(base64_decoded)
+    pil_image = Image.open(byte_stream)
+    return pil_image
+--------------------å›¾ä¸ªæ ¼å¼è½¬æ¢---------------------------------------------------
+#PILè½¬base64
+def image_to_base64_str(pil_image):
+    byte_arr = io.BytesIO()
+    pil_image.save(byte_arr, format='PNG')
+    byte_arr = byte_arr.getvalue()
+    return str(base64.b64encode(byte_arr).decode('utf-8'))
+    
+#æ•°ç»„è½¬base64(æ–¹æ³•ä¸€)
+pil_image = Image.fromarray(cv2.cvtColor(image_array, cv2.COLOR_BGR2RGB))
+image_base64 = image_to_base64_str(pil_image)
+
+#æ•°ç»„è½¬base64(æ–¹æ³•äºŒ)
+retval, buffer = cv2.imencode('.png', img_mask_face_array)
+image_mask_face_base64 = base64.b64encode(buffer).decode('utf-8')
+
+# å°†PILè½¬æ¢ä¸ºNumPyæ•°ç»„
+array_image = np.array(pil_image)
+array_image = np.asarray(pil_image)
+
+#array to pil
+from PIL import Image
+pil_image = Image.fromarray(image_array)
 
 
 
