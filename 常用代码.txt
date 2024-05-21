@@ -155,6 +155,7 @@ activate torch_env
 pip install package_name -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 --------------------图个格式转换---------------------------------------------------
+from PIL import Image
 
 #base64转PIL
 def base64_to_pil(img_base64):
