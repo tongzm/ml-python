@@ -188,6 +188,24 @@ from PIL import Image
 pil_image = Image.fromarray(image_array)
 
 
+音量调节
+alsamixer
+
+常用开机自启管理命令总结
+拷贝.service文件: sudo cp mcp_pipe.service /etc/systemd/system/mcp_pipe.service
+赋权限:sudo chmod 644 /etc/systemd/system/mcp_pipe.service
+重新加载 systemd 配置:sudo systemctl daemon-reload
+
+启用开机自启: sudo systemctl enable mcp_pipe.service
+禁止开机自启: sudo systemctl disable mcp_pipe.service
+立即启动: sudo systemctl start mcp_pipe.service
+立即停止: sudo systemctl stop mcp_pipe.service
+重启服务: sudo systemctl restart mcp_pipe.service
+查看状态: sudo systemctl status mcp_pipe.service
+查看实时日志：journalctl -u mcp_pipe.service -f
+
+
+
 
 
 
