@@ -204,6 +204,23 @@ alsamixer
 查看状态: sudo systemctl status mcp_pipe.service
 查看实时日志：journalctl -u mcp_pipe.service -f
 
+第一步：在 GitLab 上创建一个新的空项目
+在您的浏览器中打开 GitLab，并导航到 xiaozhi 组。
+点击页面右上角的蓝色按钮 "New project"。
+选择 "Create blank project"。
+在 "Project name" 字段中，为您的项目命名，例如 simple-py-xiaozhi。
+确保 "Project slug" 和 "Project URL" 是正确的。
+您可以选择将 "Visibility Level" 设置为 "Private" 或 "Internal"。
+不要 勾选 "Initialize repository with a README"。因为您本地已经有项目了，所以要创建一个空的项目。
+点击 "Create project"。
+
+1. cd D:\work\py-xiaozhi\simple-py-xiaozhi
+2. git init
+3. git remote add origin [您在GitLab上创建的项目的URL]
+4. git add .
+5. git commit -m "Initial commit"
+6. git push -u origin main
+
 
 
 
