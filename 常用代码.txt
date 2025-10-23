@@ -221,6 +221,20 @@ alsamixer
 5. git commit -m "Initial commit"
 6. git push -u origin main
 
+---------esp32编译----------------------
+cd ~/work/esp-idf
+source ./export.sh
+
+1. idf.py set-target esp32s3
+2. idf.py menuconfig
+3. idf.py build 
+------生成单个固件文件-----
+4. cd build , 
+5. python3 -m esptool --chip esp32s3 merge_bin -o ../xiaozhi_ok.bin @flash_args
+6. 烧录固件: 
+python -m esptool --chip esp32s3 -p /dev/tty.usbmodemXXXX -b 460800 --before default_reset --after hard_reset write_flash -z 0x0 xiaozhi.bin
+
+
 
 
 
